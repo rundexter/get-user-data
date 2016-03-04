@@ -8,10 +8,6 @@
             "title":"Key"
         },
         {
-            "id": "value",
-            "title": "Value"
-        },
-        {
             "id": "default",
             "title": "Default"
         }

@@ -1,4 +1,5 @@
 var _ = require( 'lodash' );
+var q = require( 'q' );
 
 module.exports = {
     /**
@@ -9,15 +10,19 @@ module.exports = {
      */
     run: function(step, dexter) {
         var keys = step.input( 'key' ).toArray();
-        var vals = step.input( 'value' ).toArray();
         var defs = step.input( 'default' ).toArray();
 
+        var self = this;
+
         var results = [ ];
+        _.zipWith( keys, defs, function( k, d ) { return { key: k, def: d } })
+            .forEach( function( item ) {
+                results.push( self.storage.user( item.key, item.def ) );
+            } );
 
-        _.zipWith( keys, vals, defs, function( k, v, d ) { return { key: k, value: v, 'default': d } } ).forEach( function( item ) {
-            results.push( this.storage.user( item.key, item.value, item.default ) );
-        }.bind( this ) );
+        q.all( results )
+            .then( function( res ) { return self.complete( res ) } )
+            .then( function( err ) { return self.complete( err ) } );
 
-        this.complete( results );
     }
 };
