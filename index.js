@@ -22,7 +22,7 @@ module.exports = {
 
         q.all( results )
             .then( function( res ) { return self.complete( res ) } )
-            .then( function( err ) { return self.complete( err ) } );
+            .fail( function( err ) { return self.fail( err ) } );
 
     }
 };
