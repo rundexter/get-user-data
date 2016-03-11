@@ -17,13 +17,13 @@ module.exports = {
         var results = [ ];
         _.zipWith( keys, defs, function( k, d ) { return { key: k, def: d } })
             .forEach( function( item ) {
-                results.push( self.storage.user( item.key, item.def ) );
+                results.push( self.storage.user( item.key ) );
             } );
 
         var ret = [ ];
         q.all( results )
             .then( function( res ) {
-                res.forEach( function( val ) { ret.push( { value: val } ) } );
+                res.forEach( function( val, i ) { ret.push( { value: ( val || defs[ i ] ) } ) } );
                 return self.complete( ret );
             } )
             .fail( function( err ) { return self.fail( err ) } );
