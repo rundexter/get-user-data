@@ -20,8 +20,12 @@ module.exports = {
                 results.push( self.storage.user( item.key, item.def ) );
             } );
 
+        var ret = [ ];
         q.all( results )
-            .then( function( res ) { return self.complete( { value: res } ) } )
+            .then( function( res ) {
+                res.forEach( function( val ) { ret.push( { value: val } ) } );
+                return self.complete( ret );
+            } )
             .fail( function( err ) { return self.fail( err ) } );
 
     }
