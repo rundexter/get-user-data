@@ -21,7 +21,7 @@ module.exports = {
             } );
 
         q.all( results )
-            .then( function( res ) { return self.complete( res ) } )
+            .then( function( res ) { return self.complete( { value: res } ) } )
             .fail( function( err ) { return self.fail( err ) } );
 
     }
