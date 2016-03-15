@@ -2,21 +2,17 @@
  * Metadata describing the module operation
  */
 {
-    "inputs": [
-        {
-            "id": "key",
-            "title":"Key"
-        },
-        {
-            "id": "default",
-            "title": "Default"
-        }
-    ],
-    "outputs": [
-        {
-            "id": "value",
-            "title":"Value"
-        }
-    ],
+    "inputs": [{
+        "id": "key",
+        "title":"Key"
+    }, {
+        "id": "default",
+        "title": "Default"
+    }],
+    "outputs": [{
+        "id": "value",
+        "title":"Value"
+    }],
+    "icon" : "database",
     "title": "Get user data"
 }

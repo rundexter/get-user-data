@@ -1,13 +1,17 @@
 {
   "name": "get-user-data",
   "version": "0.0.1",
-  "description": "",
+  "description": "Get User Data for this application",
   "main": "index.js",
-  "author": "Mike Friedman",
-  "license": "ISC",
+  "author": "Run Dexter, Inc",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "lodash": "^3.10.1",
     "q": "^1.4.1"
+  }, 
+  "repository": {
+    "type" : "git",
+    "url"  : "https://github.com/rundexter/get-user-data"
   }
 }
